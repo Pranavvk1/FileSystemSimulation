@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include "File.cpp"
 
@@ -45,6 +44,31 @@ class Directory {
             files = newFiles;
         } 
 
+        void removeDirectory(std::string target) {
+            std::vector<Directory> newDirectories;
+            for(Directory directory: directories) {
+                if(directory.getName() != target) {
+                    newDirectories.push_back(directory);
+                }
+            }
+            directories = newDirectories;
+        }
 
+        void addFile(File file) {
+            files.push_back(file);
+        }
 
+        void addDirectory(Directory directory) {
+            directories.push_back(directory);
+        }
+
+        void listContents() {
+            for(File file: files) {
+                std::cout << file.getName() << " ";
+            }
+            for(Directory directory: directories){
+                std::cout << directory.getName() << " ";
+            }
+            std::cout << '\n';
+        }
 };
