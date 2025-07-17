@@ -8,6 +8,8 @@ class Directory {
         std::string name;
 
     public:
+        Directory() {}
+
         Directory(std::string name) {
             this->name = name;
         }
