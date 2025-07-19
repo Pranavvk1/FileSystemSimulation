@@ -5,6 +5,7 @@ class Directory {
     private:
         std::vector<File> files;
         std::vector<Directory> directories;
+        Directory *parent;
         std::string name;
 
     public:
@@ -14,8 +15,17 @@ class Directory {
             this->name = name;
         }
 
+        Directory(std::string name, Directory *parent) {
+            this->name = name;
+            this->parent = parent;
+        }
+
         std::string getName() {
             return name;
+        }
+
+        Directory *getParent() {
+            return parent;
         }
 
         File getFile(std::string target) {
