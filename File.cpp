@@ -10,6 +10,11 @@ class File {
             contents = "";
         }
 
+        File(std::string name, std::string contents) {
+            this->name = name;
+            this->contents = contents;
+        }
+
         std::string getName() {
             return name;
         }

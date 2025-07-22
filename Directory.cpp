@@ -37,13 +37,14 @@ class Directory {
             return File("-1");
         }
 
-        Directory getDirectory(std::string target) {
-            for(Directory directory: directories) {
-                if(directory.getName() == target) {
-                    return directory;
+        Directory *getDirectory(std::string target) {
+            for(int i = 0; i < directories.size(); i++) {
+                Directory *dir = &directories[i];
+                if(dir->getName() == target) {
+                    return dir;
                 }
             }
-            return Directory("-1");
+            return nullptr;
         }
 
         void removeFile(std::string target) {
@@ -52,6 +53,9 @@ class Directory {
                 if(file.getName() != target) {
                     newFiles.push_back(file);
                 }
+            }
+            if(files.size() == newFiles.size()) {
+                std::cout << target << ": no such file" << '\n';
             }
             files = newFiles;
         } 
@@ -62,6 +66,9 @@ class Directory {
                 if(directory.getName() != target) {
                     newDirectories.push_back(directory);
                 }
+            }
+            if(directories.size() == newDirectories.size()) {
+                std::cout << target << ": so such directory" << '\n';
             }
             directories = newDirectories;
         }
